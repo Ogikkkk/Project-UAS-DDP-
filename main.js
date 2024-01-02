@@ -34,7 +34,18 @@ function loadData() {
   }
 }
 
-// Fungsi untuk menambahkan kategori baru
+// Fungsi untuk menampilkan daftar kategori
+function displayCategories() {
+  console.log('\nDaftar Kategori:');
+  console.log('================');
+  categories.forEach((category, index) => {
+    console.log((index + 1) + '. ' + category.name);
+  });
+  // Menampilkan menu utama setelah menampilkan daftar kategori
+  showMainMenu();
+}
+
+// Modifikasi fungsi addCategory untuk menampilkan daftar kategori setelah menambahkan kategori baru
 function addCategory() {
   rl.question('Nama Kategori: ', (categoryName) => {
     rl.question('Satuan Kata Kunci: ', (keyword) => {
@@ -47,11 +58,12 @@ function addCategory() {
       // Menyimpan perubahan ke dalam file
       saveData();
       console.log('Kategori berhasil ditambahkan!');
-      // Menampilkan menu utama setelah menambahkan kategori
-      showMainMenu();
+      // Menampilkan daftar kategori setelah menambahkan kategori baru
+      displayCategories();
     });
   });
 }
+
 
 // Fungsi untuk mencari kategori berdasarkan nama
 function findCategory() {
